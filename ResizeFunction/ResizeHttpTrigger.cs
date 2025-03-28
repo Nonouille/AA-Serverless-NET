@@ -26,6 +26,11 @@ namespace PyArnaud.FunctionApp
                 return new BadRequestObjectResult("Les paramètres 'w' et 'h' doivent être des entiers valides.");
             }
 
+            if (w <= 0 || w >= 3000 || h <= 0 || h >= 3000)
+            {
+                return new BadRequestObjectResult("Les paramètres 'w' et 'h' doivent être supérieurs à 1 et inférieurs à 10000.");
+            }
+
             byte[]  targetImageBytes;
             using(var  msInput = new MemoryStream())
             {
